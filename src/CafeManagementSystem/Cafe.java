@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class Cafe {
     public MenuItem item1, item2, item3;
-    public Order currentOrder;
+    public Order currentOrder = new Order();
 
     public void addMenuItem1(MenuItem item1){
         this.item1 = item1;
