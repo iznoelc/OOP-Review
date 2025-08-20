@@ -56,11 +56,11 @@ public class Main {
             item1 = myCafe.item3;
         }
 
-        System.out.println("Enter the second item of your order: ");
+        System.out.println("Enter the second item of your order (1, 2, or 3): ");
         item = scnr.nextInt();
         while (item < 1 || item > 3){
             System.out.println("Invalid item number!");
-            System.out.println("Enter the second item of your order: ");
+            System.out.println("Enter the second item of your order (1, 2, or 3): ");
             item = scnr.nextInt();
         }
 
@@ -72,7 +72,7 @@ public class Main {
             item2 = myCafe.item3;
         }
 
-        System.out.println("Enter the third item of your order: ");
+        System.out.println("Enter the third item of your order (1, 2, or 3): ");
         item = scnr.nextInt();
         while (item < 1 || item > 3){
             System.out.println("Invalid item number!");
