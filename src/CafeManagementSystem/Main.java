@@ -12,9 +12,9 @@ public class Main {
         MenuItem menuItem, item1, item2, item3;
         int item;
 
-        // set up the menu by getting menu items from the user
         System.out.println("---ENTER MENU ITEMS---");
         for (int i = 1; i < 4; i++){
+            // get menu item details
             System.out.println("Enter menu item " + i + "'s name: ");
             name = scnr.nextLine();
             System.out.println("Enter menu item " + i + "'s price: ");
@@ -22,7 +22,9 @@ public class Main {
             System.out.println("Enter menu item " + i + "'s category: ");
             category = scnr.nextLine();
 
+            // use constructor to create new menu item
             menuItem = new MenuItem(name, price, category);
+            // use the proper "addMenuItem" method depending on which iteration the loop is currently on
             if (i == 1){
                 myCafe.addMenuItem1(menuItem);
             } else if (i == 2){
