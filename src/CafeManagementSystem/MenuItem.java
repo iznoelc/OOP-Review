@@ -39,7 +39,7 @@ public class MenuItem {
         this.category = category;
     }
 
-    public void printItemInfo(){
+    public void displayItemInfo(){
         // format price to only have two decimals
         DecimalFormat df = new DecimalFormat("0.00");
         double formattedPrice = Double.parseDouble(df.format(price));

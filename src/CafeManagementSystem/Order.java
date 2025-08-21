@@ -18,6 +18,18 @@ public class Order {
         this.item3 = item3;
     }
 
+    public MenuItem getItem1(){
+        return item1;
+    }
+
+    public MenuItem getItem2(){
+        return item2;
+    }
+
+    public MenuItem getItem3(){
+        return item3;
+    }
+
     public void calculateTotal(){
         this.totalAmount = item1.getPrice() + item2.getPrice() + item3.getPrice();
     }
@@ -28,11 +40,12 @@ public class Order {
         double formattedTotal = Double.parseDouble(df.format(totalAmount));
 
         System.out.println("Your order details:");
+        System.out.println("--------------------------");
 
         // print item info & then total price
-        item1.printItemInfo();
-        item2.printItemInfo();
-        item3.printItemInfo();
+        item1.displayItemInfo();
+        item2.displayItemInfo();
+        item3.displayItemInfo();
         System.out.print("Total: $" + formattedTotal);
     }
 }

@@ -6,10 +6,11 @@ public class Main {
     public static void main (String[] args){
         Scanner scnr = new Scanner(System.in); // scanner for user input
         Cafe myCafe = new Cafe(); // create a cafe object
+        Order myOrder = new Order(); // create an order object to track user order
 
         String name, category;
         double price;
-        MenuItem menuItem, item1, item2, item3;
+        MenuItem menuItem;
         int item;
 
         System.out.println("---ENTER MENU ITEMS---");
@@ -49,11 +50,11 @@ public class Main {
         // assign item 1 to the proper menu item according to user's input
         // repeat this for item 2 & item 3
         if (item == 1){
-            item1 = myCafe.item1;
+            myOrder.addItem1(myCafe.getMenuItem1());
         } else if (item == 2){
-            item1 = myCafe.item2;
+            myOrder.addItem1(myCafe.getMenuItem2());
         } else {
-            item1 = myCafe.item3;
+            myOrder.addItem1(myCafe.getMenuItem3());
         }
 
         System.out.println("Enter the second item of your order (1, 2, or 3): ");
@@ -65,11 +66,11 @@ public class Main {
         }
 
         if (item == 1){
-            item2 = myCafe.item1;
+            myOrder.addItem2(myCafe.getMenuItem1());
         } else if (item == 2){
-            item2 = myCafe.item2;
+            myOrder.addItem2(myCafe.getMenuItem2());
         } else {
-            item2 = myCafe.item3;
+            myOrder.addItem2(myCafe.getMenuItem3());
         }
 
         System.out.println("Enter the third item of your order (1, 2, or 3): ");
@@ -81,15 +82,15 @@ public class Main {
         }
 
         if (item == 1){
-            item3 = myCafe.item1;
+            myOrder.addItem3(myCafe.getMenuItem1());
         } else if (item == 2){
-            item3 = myCafe.item2;
+            myOrder.addItem3(myCafe.getMenuItem2());
         } else {
-            item3 = myCafe.item3;
+            myOrder.addItem3(myCafe.getMenuItem3());
         }
 
-        myCafe.placeOrder(item1, item2, item3); // place order with the three chosen items
-        myCafe.currentOrder.calculateTotal(); // calculate the total of the user's chosen items
-        myCafe.currentOrder.displayOrderDetails(); // display the user's order details
+        myCafe.placeOrder(myOrder); // place order with the three chosen items
+        myCafe.getCurrentOrder().calculateTotal(); // calculate the total of the user's chosen items
+        myCafe.getCurrentOrder().displayOrderDetails(); // display the user's order details
     }
 }
