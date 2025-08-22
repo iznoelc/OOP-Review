@@ -32,12 +32,22 @@ public class Cafe {
         return currentOrder;
     }
 
+    /**
+     * Sets user's current order to the order to be placed and then calculates
+     * the total.
+     *
+     * @param  order user's order to be placed
+     */
     public void placeOrder(Order order){
         currentOrder.addItem1(order.getItem1());
         currentOrder.addItem2(order.getItem2());
         currentOrder.addItem3(order.getItem3());
+        currentOrder.calculateTotal();
     }
 
+    /**
+     * Display the three items on the cafe's menu.
+     */
     public void displayMenu(){
         System.out.println("---CAFE MENU---");
         System.out.print("1. ");

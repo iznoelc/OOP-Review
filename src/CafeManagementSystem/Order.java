@@ -3,8 +3,8 @@ package CafeManagementSystem;
 import java.text.DecimalFormat;
 
 public class Order {
-    private MenuItem item1, item2, item3;
-    private double totalAmount;
+    private MenuItem item1, item2, item3; // MenuItems to represent the items ordered by the user
+    private double totalAmount; // total amount of user's ordered items
 
     public void addItem1(MenuItem item1){
         this.item1 = item1;
@@ -30,10 +30,16 @@ public class Order {
         return item3;
     }
 
+    /**
+     * Add the three items of the order in order to calculate the total
+     */
     public void calculateTotal(){
         this.totalAmount = item1.getPrice() + item2.getPrice() + item3.getPrice();
     }
 
+    /**
+     * Print details of the order to the console and the total amount
+     */
     public void displayOrderDetails(){
         // format total to only have two decimals
         DecimalFormat df = new DecimalFormat("0.00");

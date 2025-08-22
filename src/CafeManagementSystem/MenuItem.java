@@ -39,6 +39,9 @@ public class MenuItem {
         this.category = category;
     }
 
+    /**
+     * Display an item's info by printing its name, price and category to the console
+     */
     public void displayItemInfo(){
         // format price to only have two decimals
         DecimalFormat df = new DecimalFormat("0.00");

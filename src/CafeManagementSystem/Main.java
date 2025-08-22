@@ -90,7 +90,6 @@ public class Main {
         }
 
         myCafe.placeOrder(myOrder); // place order with the three chosen items
-        myCafe.getCurrentOrder().calculateTotal(); // calculate the total of the user's chosen items
         myCafe.getCurrentOrder().displayOrderDetails(); // display the user's order details
     }
 }
