@@ -6,69 +6,78 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        // create playlists for each song type
+        PopPlaylist allPopSongs = new PopPlaylist();
+        RockPlaylist allRockSongs = new RockPlaylist();
+        JazzPlaylist allJazzSongs = new JazzPlaylist();
+
+        // create an upbeat playlist. for the assignment, since we have converted
+        // "Playlist" into an interface, i will use PopPlaylist for this demonstration,
+        // but it would make more sense to use a "Default" playlist, where Playlist is a class
+        // and Pop, Rock, Jazz, etc. are children of the default playlist class, since---like for
+        // ---recommendations, Playlists may mix types and songs may not be all in one specific genre.
+        PopPlaylist upbeatSongs = new PopPlaylist();
+
+        Recommender recommend = new Recommender(); // initialize a recommender
+
+
         // ---CREATING NEW SONGS---
         // create 3 songs for each genre that the user can pick from to add to their playlist
-        Song rock1 = new Song("Rocket Skates", "Deftones", 4.233);
-        Song rock2 = new Song("Screaming", "Loathe", 5.9);
-        Song rock3 = new Song("Papercut", "Linkin Park", 3.067);
+        // FOR 1C: add 2 songs per genre so there are 5 songs per genre
+        String[][] rockSongs = {
+                {"Rocket Skates", "Deftones", "4.233"},
+                {"Screaming", "Loathe", "5.9"},
+                {"Papercut", "Linkin Park", "3.067"},
+                {"Smells Like Teen Spirit", "Nirvana", "5.033"},
+                {"my mind is a mountain", "Deftones", "2.85"},
+        };
 
-        Song pop1 = new Song("Good Luck, Babe", "Chappell Roan", 3.63);
-        Song pop2 = new Song("Gameboy", "KATSEYE", 3.083);
-        Song pop3 = new Song("G.I.R.L.", "8485", 2.7);
-
-        Song jazz1 = new Song("Take Five", "Dave Brubeck", 5.467);
-        Song jazz2 = new Song("So What", "Miles Davis", 9.367);
-        Song jazz3 = new Song("Take The “A” Train", "Duke Ellington", 3.0);
-
-        // ---CREATING A USER---
-        // then set the username
-        User myUser = new User();
-        myUser.setUsername("iznoelc");
-
-        // ---CREATING PLAYLISTS---
-        myUser.createPlaylist("mischief", "pop");
-        myUser.createPlaylist("deep sea creature", "rock");
-
-        // ---ADDING/REMOVING SONGS---
-        // say we want to add a song to the "mischief" playlist
-        // we can loop through all playlists until we find one with a name
-        // equaling mischief. since there could be "Mischief" and "mischief"
-        // we can just use equals instead of equalsIgnoreCase.
-        for (int i = 0; i < myUser.getAllPlaylists().size(); i++){
-            if (myUser.getAllPlaylists().get(i).getPlaylistName().equals("mischief")){
-                System.out.println("Found mischief playlist, adding songs");
-
-                // add the songs we want to the playlist
-                System.out.println("Adding song: " + pop1.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop1);
-
-                System.out.println("Adding song: " + pop2.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop2);
-
-                System.out.println("Adding song: " + pop3.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop3);
-
-                // then we could remove a song if we wanted
-                System.out.println("Removing song: " + pop1.getTitle() + " from playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).removeSong(pop1);
-
-            } else if (myUser.getAllPlaylists().get(i).getPlaylistName().equals("deep sea creature")){
-                // add songs to other playlist
-                System.out.println("Adding song: " + rock1.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock1);
-
-                System.out.println("Adding song: " + rock2.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock2);
-
-                System.out.println("Adding song: " + rock3.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock3);
-            }
+        // add all rock songs to rock playlist
+        for (String[] song : rockSongs){
+            allRockSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
         }
 
-        // ---PRINTING PLAYLISTS---
-        for (int i = 0; i < myUser.getAllPlaylists().size(); i++) {
-            myUser.getAllPlaylists().get(i).playAllSongs();
+        String[][] popSongs = {
+                {"Good Luck, Babe", "Chappell Roan", "3.63"},
+                {"Gameboy", "KATSEYE", "3.083"},
+                {"G.I.R.L.", "8485", "2.7"},
+                {"Asheville", "glaive", "2.633"},
+                {"Knock Yourself Out XD", "Porter Robinson", "2.8"},
+        };
+
+        for (String[] song : popSongs){
+            allPopSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
         }
+
+        String[][] jazzSongs = {
+                {"Take Five", "Dave Brubeck", "5.467"},
+                {"So What", "Miles Davis", "9.367"},
+                {"Take The \"A\" Train", "Duke Ellington", "3.0"},
+                {"My Favorite Things", "John Coltrane", "13.6833"},
+                {"Come On! Feel the Illinoise! (Part I: The World’s Columbian Exposition – Part II: Carl Sandburg Visits Me in a Dream)", "Sufjan Stevens", "6.75"}
+        };
+
+        for (String[] song : jazzSongs){
+            allJazzSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
+        }
+
+        // use pop, rock, and jazz playlists to create a playlist by mood
+        // we could do this for any mood, but for demonstration purposes, i have only created
+        // one mood playlist. then, call recommender on the mood playlist
+        System.out.println("Recommending you UPBEAT songs: ");
+        upbeatSongs.addSong(allPopSongs.getSongs().get(1));
+        upbeatSongs.addSong(allPopSongs.getSongs().get(2));
+        upbeatSongs.addSong(allJazzSongs.getSongs().get(0));
+        upbeatSongs.addSong(allJazzSongs.getSongs().get(2));
+        upbeatSongs.addSong(allRockSongs.getSongs().get(0));
+        recommend.generateRandomRecommendations(upbeatSongs);
+
+        // ---RECOMMENDATIONS BY GENRE & MOOD---
+        // since we have created playlists by genre & mood, we can get the genre
+        // and then randomly generate 2 songs from that genre as "recommendations."
+        // simulate user entering "pop" for genre recommendations
+        System.out.println("Recommending you POP songs: ");
+        recommend.generateRandomRecommendations(allPopSongs);
 
     }
 }

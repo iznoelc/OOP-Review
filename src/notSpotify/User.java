@@ -35,11 +35,9 @@ public class User {
             playlist = new JazzPlaylist();
         } else if (type.equalsIgnoreCase("rock")){
             playlist = new RockPlaylist();
-        } else if (type.equalsIgnoreCase("pop")){
-            playlist = new PopPlaylist();
         } else {
-            // default to normal playlist if user does not enter a valid playlist type
-            playlist = new Playlist();
+            // default to a pop playlist otherwise
+            playlist = new PopPlaylist();
         }
 
         playlist.setPlaylistName(name); // set the playlist name
