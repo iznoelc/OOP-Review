@@ -6,19 +6,44 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        // create playlists for each song type
+        PopPlaylist allPopSongs = new PopPlaylist();
+        RockPlaylist allRockSongs = new RockPlaylist();
+        JazzPlaylist allJazzSongs = new JazzPlaylist();
+
         // ---CREATING NEW SONGS---
         // create 3 songs for each genre that the user can pick from to add to their playlist
-        Song rock1 = new Song("Rocket Skates", "Deftones", 4.233);
-        Song rock2 = new Song("Screaming", "Loathe", 5.9);
-        Song rock3 = new Song("Papercut", "Linkin Park", 3.067);
+        // FOR 1C: add 2 songs per genre so there are 5 songs per genre
+        String[][] rockSongs = {
+                {"Rocket Skates", "Deftones", "4.233"},
+                {"Screaming", "Loathe", "5.9"},
+                {"Papercut", "Linkin Park", "3.067"},
+        };
 
-        Song pop1 = new Song("Good Luck, Babe", "Chappell Roan", 3.63);
-        Song pop2 = new Song("Gameboy", "KATSEYE", 3.083);
-        Song pop3 = new Song("G.I.R.L.", "8485", 2.7);
+        // add all rock songs to rock playlist
+        for (String[] song : rockSongs){
+            allRockSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
+        }
 
-        Song jazz1 = new Song("Take Five", "Dave Brubeck", 5.467);
-        Song jazz2 = new Song("So What", "Miles Davis", 9.367);
-        Song jazz3 = new Song("Take The “A” Train", "Duke Ellington", 3.0);
+        String[][] popSongs = {
+                {"Good Luck, Babe", "Chappell Roan", "3.63"},
+                {"Gameboy", "KATSEYE", "3.083"},
+                {"G.I.R.L.", "8485", "2.7"},
+        };
+
+        for (String[] song : popSongs){
+            allPopSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
+        }
+
+        String[][] jazzSongs = {
+                {"Take Five", "Dave Brubeck", "5.467"},
+                {"So What", "Miles Davis", "9.367"},
+                {"Take The \"A\" Train", "Duke Ellington", "3.0"},
+        };
+
+        for (String[] song : jazzSongs){
+            allJazzSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
+        }
 
         // ---CREATING A USER---
         // then set the username
@@ -39,29 +64,29 @@ public class Main {
                 System.out.println("Found mischief playlist, adding songs");
 
                 // add the songs we want to the playlist
-                System.out.println("Adding song: " + pop1.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop1);
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(0).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(0));
 
-                System.out.println("Adding song: " + pop2.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop2);
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(1).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(1));
 
-                System.out.println("Adding song: " + pop3.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(pop3);
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(2).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(2));
 
                 // then we could remove a song if we wanted
-                System.out.println("Removing song: " + pop1.getTitle() + " from playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).removeSong(pop1);
+                System.out.println("Removing song: " + allPopSongs.getSongs().get(0).getTitle() + " from playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).removeSong(allPopSongs.getSongs().get(0));
 
             } else if (myUser.getAllPlaylists().get(i).getPlaylistName().equals("deep sea creature")){
                 // add songs to other playlist
-                System.out.println("Adding song: " + rock1.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock1);
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(0).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(0));
 
-                System.out.println("Adding song: " + rock2.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock2);
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(1).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(1));
 
-                System.out.println("Adding song: " + rock3.getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(rock3);
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(2).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
+                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(2));
             }
         }
 
