@@ -13,4 +13,7 @@
     - Adding & removing songs from a user's specific playlist
     - Printing out details for each one of user's playlists
 - notSpotifyModded branch: 1c assignment
-  - WIP
+  - Create a Recommendation class to deal with recommending user songs by genre and mood
+  - Print out recommendations
+    - Remove what is printed in the console for 1b to reduce redundancy
+  - Convert Playlist class into an interface and adjust PopPlaylist, RockPlaylist, and JazzPlaylist classes accordingly
