@@ -1,6 +1,10 @@
 # OOP-Review
 - 8/26 Object oriented design OOP Review Assignment
 
+## OUTPUT SCREENSHOTS
+- Output in OutputScreenshot folder in main branch for CafeManagement and notSpotify 1b
+- Output in OutputScreenshot folder in notSpotifyModded branch for notSpotify 1c
+
 ## CAFE MANAGEMENT
 - User input to enter three menu items and then print menu out to the console
 - Then, ask user to enter their order. Print out order details after order has been entered
