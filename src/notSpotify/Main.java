@@ -61,15 +61,17 @@ public class Main {
             allJazzSongs.addSong(new Song(song[0], song[1], Double.parseDouble(song[2])));
         }
 
-        // use pop, rock, and jazz playlists to create a playlist by mood
-        // we could do this for any mood, but for demonstration purposes, i have only created
-        // one mood playlist. then, call recommender on the mood playlist
-        System.out.println("Recommending you UPBEAT songs: ");
+        // add songs to upbeat playlist
         upbeatSongs.addSong(allPopSongs.getSongs().get(1));
         upbeatSongs.addSong(allPopSongs.getSongs().get(2));
         upbeatSongs.addSong(allJazzSongs.getSongs().get(0));
         upbeatSongs.addSong(allJazzSongs.getSongs().get(2));
         upbeatSongs.addSong(allRockSongs.getSongs().get(0));
+
+        // use pop, rock, and jazz playlists to create a playlist by mood
+        // we could do this for any mood, but for demonstration purposes, i have only created
+        // one mood playlist. then, call recommender on the mood playlist
+        System.out.println("Recommending you UPBEAT songs: ");
         recommend.generateRandomRecommendations(upbeatSongs);
 
         // ---RECOMMENDATIONS BY GENRE & MOOD---
