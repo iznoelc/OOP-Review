@@ -59,40 +59,40 @@ public class Main {
         // we can loop through all playlists until we find one with a name
         // equaling mischief. since there could be "Mischief" and "mischief"
         // we can just use equals instead of equalsIgnoreCase.
-        for (int i = 0; i < myUser.getAllPlaylists().size(); i++){
-            if (myUser.getAllPlaylists().get(i).getPlaylistName().equals("mischief")){
+        for (Playlist playlist : myUser.getAllPlaylists()){
+            if (playlist.getPlaylistName().equals("mischief")){
                 System.out.println("Found mischief playlist, adding songs");
 
                 // add the songs we want to the playlist
-                System.out.println("Adding song: " + allPopSongs.getSongs().get(0).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(0));
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(0).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allPopSongs.getSongs().get(0));
 
-                System.out.println("Adding song: " + allPopSongs.getSongs().get(1).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(1));
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(1).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allPopSongs.getSongs().get(1));
 
-                System.out.println("Adding song: " + allPopSongs.getSongs().get(2).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allPopSongs.getSongs().get(2));
+                System.out.println("Adding song: " + allPopSongs.getSongs().get(2).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allPopSongs.getSongs().get(2));
 
                 // then we could remove a song if we wanted
-                System.out.println("Removing song: " + allPopSongs.getSongs().get(0).getTitle() + " from playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).removeSong(allPopSongs.getSongs().get(0));
+                System.out.println("Removing song: " + allPopSongs.getSongs().get(0).getTitle() + " from playlist " + playlist.getPlaylistName());
+                playlist.removeSong(allPopSongs.getSongs().get(0));
 
-            } else if (myUser.getAllPlaylists().get(i).getPlaylistName().equals("deep sea creature")){
+            } else if (playlist.getPlaylistName().equals("deep sea creature")){
                 // add songs to other playlist
-                System.out.println("Adding song: " + allRockSongs.getSongs().get(0).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(0));
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(0).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allRockSongs.getSongs().get(0));
 
-                System.out.println("Adding song: " + allRockSongs.getSongs().get(1).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(1));
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(1).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allRockSongs.getSongs().get(1));
 
-                System.out.println("Adding song: " + allRockSongs.getSongs().get(2).getTitle() + " to playlist " + myUser.getAllPlaylists().get(i).getPlaylistName());
-                myUser.getAllPlaylists().get(i).addSong(allRockSongs.getSongs().get(2));
+                System.out.println("Adding song: " + allRockSongs.getSongs().get(2).getTitle() + " to playlist " + playlist.getPlaylistName());
+                playlist.addSong(allRockSongs.getSongs().get(2));
             }
         }
 
         // ---PRINTING PLAYLISTS---
-        for (int i = 0; i < myUser.getAllPlaylists().size(); i++) {
-            myUser.getAllPlaylists().get(i).playAllSongs();
+        for (Playlist playlist : myUser.getAllPlaylists()) {
+            playlist.playAllSongs();
         }
 
     }
